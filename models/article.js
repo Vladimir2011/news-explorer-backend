@@ -26,7 +26,7 @@ const articleSchema = new mongoose.Schema({
     type: String,
     required: true,
     validate: {
-      validator: (linkAvatar) => validate.isURL(linkAvatar),
+      validator: (link) => validate.isURL(link),
       message: (props) => `${props.value} неверный формат ссылки!`,
     },
   },
@@ -34,13 +34,13 @@ const articleSchema = new mongoose.Schema({
     type: String,
     required: true,
     validate: {
-      validator: (linkAvatar) => validate.isURL(linkAvatar),
+      validator: (link) => validate.isURL(link),
       message: (props) => `${props.value} неверный формат ссылки!`,
     },
   },
   owner: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'user',
+    select: false,
     required: true,
   },
 });
