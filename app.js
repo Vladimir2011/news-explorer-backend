@@ -7,13 +7,13 @@ const helmet = require('helmet');
 const { errors } = require('celebrate');
 
 const { limiter } = require('./modules/limiter');
+const { PORT, DATABASE_URL } = require('./config/devconfig');
 
 const { errorHandler } = require('./middlewares/errorhandler');
 const routes = require('./routes/index');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const app = express();
-const { PORT = 3000 } = process.env;
 
 app.use(bodyParser.json());
 app.use(cookieParser());
@@ -21,7 +21,7 @@ app.use(helmet());
 app.use(limiter);
 
 // подключаемся к серверу mongo
-mongoose.connect('mongodb://localhost:27017/newsexplorerdb', {
+mongoose.connect(DATABASE_URL, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false,

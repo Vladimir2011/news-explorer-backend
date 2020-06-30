@@ -4,7 +4,7 @@ const userModel = require('../models/user.js');
 const ConflictError = require('../errors/conflictError.js');
 const { CONFLICT_USER } = require('../config/constants');
 
-const { NODE_ENV, JWT_SECRET } = process.env;
+const { JWT_SECRET_KEY } = require('../config/devconfig');
 
 // Получаем информацию о себе
 module.exports.getUserInfo = (req, res, next) => {
@@ -40,7 +40,7 @@ module.exports.login = (req, res, next) => {
 
   return userModel.findUserByCredentials(email, password)
     .then((user) => {
-      const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', { expiresIn: '7d' });
+      const token = jwt.sign({ _id: user._id }, JWT_SECRET_KEY, { expiresIn: '7d' });
       res.status(201).cookie('jwt', token, {
         maxAge: 3600000 * 24 * 7,
         httpOnly: true,
