@@ -12,4 +12,10 @@
 
 ### Публичный IP: 84.201.128.79.
 
+*https://api.explorer-news.ru*
+*http://api.explorer-news.ru*
+
+*https://www.api.explorer-news.ru*
+*http://www.api.explorer-news.ru*
+
 ### Версия проекта: 1.0.0
