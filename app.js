@@ -7,7 +7,9 @@ const helmet = require('helmet');
 const { errors } = require('celebrate');
 
 const { limiter } = require('./modules/limiter');
-const { PORT, DATABASE_URL } = require('./config/devconfig');
+const { DATABASE_URL } = require('./config/devconfig');
+
+const { PORT = 3000, NODE_ENV, MONGO_URL } = process.env;
 
 const { errorHandler } = require('./middlewares/errorhandler');
 const routes = require('./routes/index');
@@ -21,7 +23,7 @@ app.use(helmet());
 app.use(limiter);
 
 // подключаемся к серверу mongo
-mongoose.connect(DATABASE_URL, {
+mongoose.connect(NODE_ENV === 'production' ? MONGO_URL : DATABASE_URL, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false,

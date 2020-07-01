@@ -18,4 +18,4 @@
 *https://www.api.explorer-news.ru*
 *http://www.api.explorer-news.ru*
 
-### Версия проекта: 1.0.0
+### Версия проекта: 1.2.0
