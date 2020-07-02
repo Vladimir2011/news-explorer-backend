@@ -10,7 +10,7 @@
 
 *Для тренировки Node.js, API, Express.js, MongoDB*
 
-### Публичный IP: 130.193.39.133.
+### Публичный IP: 130.193.48.32.
 
 *https://api.explorer-news.ru*
 *http://api.explorer-news.ru*
